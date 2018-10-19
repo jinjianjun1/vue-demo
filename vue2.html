@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+    {{date | fornateDate}} <br>
+    {{car}} <br>
+    <span v-text="car"></span>
+    <!-- <div v-html="demohtml"></div>  <br> -->
+   <div v-bind:class="border">1111</div> <br>
+   <div :class="border">1111</div> <br>
+
+<span v-on:click="point">点我</span>
+<span @click="point">点我</span>
+
+
+</div>
+
+
+
+</body>
+<style>
+.outerborder{
+    background: red;
+    height: 30px
+}
+</style>
+<script>
+
+function showstyle(time){
+   return time>10?'0'+time:time
+}
+
+ var app = new Vue({
+    el: '#app',
+    data: {
+       message: "Hello Vue!",
+       date:new Date(),
+       car:'车',
+       demohtml:'<div style="height=30vw;red;border:1px solid black"></div>',
+       border:'outerborder'
+    },
+    filters:{
+        fornateDate:function(value){
+            let date=new Date(value)
+            let year=date.getFullYear()
+            let month= showstyle(date.getMonth())
+            let day=showstyle(date.getDay())
+            let hour=showstyle(date.getHours())
+            let min=showstyle(date.getMinutes())
+            let second=showstyle(date.getSeconds())
+            console.log(month)
+
+            return year+'--'+ month+'--'+ day+'--'+ hour+'--' +min+'--'+ second
+        }
+    
+    },
+    methods:{
+        point:function(){
+            console.log('有人点我')
+        }
+    },
+    mounted:function(){
+        let _this=this
+        this.timer=setInterval(function(){
+          _this.date=new Date()
+        },1000)
+    },
+    beforeDestroy:function(){
+       if(this.timer){
+           clearInterval(this.timer)
+       }
+       console.log('消除了')
+    }
+ 
+
+})
+ 
+</script>
+
+
+</html>

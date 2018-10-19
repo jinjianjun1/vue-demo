@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+
+    </div>
+    <!-- //环境搭建 -->
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: "Hello Vue!"
+        },
+        // created:function(){alert(1)},
+        // mounted:function(){alert(2)}
+    })
+    console.log(app.$data)
+    console.log(app.message)
+
+</script>
+
+</html>
