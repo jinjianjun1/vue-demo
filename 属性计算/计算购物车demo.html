@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+<span v-text="text"></span> <hr>
+<!-- {{reverseText}} <br> -->
+<!-- <div v-text="reverseText"></div> -->
+{{SumPrice}}
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+    let App= new Vue({
+        el:'#app',
+        data:{
+            text:'asdsds,dsdasdaqrw,wrrrrr',
+            package1:[
+                {
+                    name:'宾利',
+                    price:2
+                },
+                {
+                    name:'拉法',
+                    price:3
+                }
+
+            ],
+            package2:[
+                {
+                    name:'夏利',
+                    price:.5
+                },
+                {
+                    name:'永久',
+                    price:100
+                }
+            ]
+          
+        },
+        methods:{
+
+        },
+        computed:{
+            SumPrice:function(){
+                let price1=0
+                let price2=0
+                for(let i=0;i<this.package1.length;i++){
+                    price1+=this.package1[i].price
+                }
+                for(let i=0;i<this.package2.length;i++){
+                    price2+=this.package2[i].price
+                }
+                    let price=price1+price2
+                    return price
+            }
+        }
+    })
+</script>
+</html>

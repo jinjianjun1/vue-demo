@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{fullName}}
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+    let app=new Vue({
+        el:'#app',
+        data:{
+            firstName:'Jason',
+            lastName:'Stans'
+        },
+        computed:{
+            fullName:{
+                get: function(){
+                    return this.firstName+this.lastName
+                },
+                set:function(value){
+                  let name=  value.split(',')
+                  this.firstName=name[0]
+                  this.lastName=name[1]
+                }
+           }
+        }
+    })
+</script>
+</html>

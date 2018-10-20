@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <a :href="url">点我</a>
+        <hr>
+        <div :class="{border:iscoming}">me</div>
+
+        对象语法 <br>
+        <button :class="{redBg:istoggle,blueBg:istoggle2}" @click="ClickHere">切换红蓝</button> <br>
+
+        数组语法<br>
+        <div :class="[B,b]"></div> <br>
+        对象数组语法混用
+        <div :class="[{border:iscoming},B]">132132132</div> <hr>
+        <div :style="{'color':gold,'border':bbb}">21212</div>
+    </div>
+
+</body>
+<style>
+    .border {
+        border: 1px solid red;
+        width: 40px;
+        height: 40px;
+    }
+
+    .redBg {
+        background: red;
+    }
+
+    .blueBg {
+        background: blue;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+    let App = new Vue({
+        el: '#app',
+        data: {
+            msg: 'ssssssssss',
+            url: 'https://baidu.com',
+            iscoming: true,
+            istoggle: true,
+            istoggle2: false,
+            B: 'blueBg',
+            b: 'border',
+            gold:"gold",
+            size:'300px',
+            bbb:'1px solid black'
+        },
+        methods: {
+            ClickHere: function () {
+                this.istoggle = !this.istoggle
+                this.istoggle2 = !this.istoggle2
+            }
+        }
+
+    })
+
+</script>
+
+</html>
