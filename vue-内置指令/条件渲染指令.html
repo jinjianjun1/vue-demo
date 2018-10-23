@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>条件渲染指令</title>
+</head>
+<body>
+    <div id="app">
+       v-if后接等号： 等好后的内容必须是布尔值 <br>
+
+       <span v-if="6<3">{{me}}</span> 
+       <p v-else-if="2>1">{{mom}}</p>
+       <p v-else> {{dad}} </p>
+    
+
+    <div v-if="istrue==='true'">
+        <input placeholder="111111" type="text" key="1"> 
+    </div>
+    <div v-else>
+        <input placeholder="22222" type="text" key ='2'>
+    </div>
+    <button @click="clickme">点我切换</button>
+    <hr>
+    <div v-show="1>2">
+        11111
+    </div>
+
+</div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+   let App = new Vue({
+       el:'#app',
+       data:{
+           me:'cheap',
+           mom:'unique',
+           dad:'awesome',
+           istrue:'true'
+       },
+       methods:{
+           clickme:function(){
+             this.istrue=(this.istrue==='true'?'false':'true')
+             console.log(this.istrue)
+           }
+       }
+   }) 
+</script>
+</html>
