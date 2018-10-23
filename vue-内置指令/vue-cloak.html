@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-cloak</title>
+</head>
+<body>
+    <div id="app">
+        v-cloak <br>
+        {{msg}}  <br>
+        <div v-cloak> <br>
+            {{msg}}  
+        </div>
+        <hr>
+        v-once <br>
+      {{onlyrenderonce}} <br>
+      <span v-once> {{onlyrenderonce}}</span>
+    </div>
+</body>
+<style>
+[v-cloak]{
+    display: none;
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+   let App = new Vue({
+       el:'#app',
+       data:{
+           msg:'开心就好',
+           onlyrenderonce:'你是最棒的'
+       }
+   }) 
+</script>
+</html>
