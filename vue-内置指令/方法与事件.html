@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>方法与事件</title>
+</head>
+<body>
+    <div id="app">
+        {{count}}
+        <button @click="addCount(120)">再试试</button>
+        <button @click="addCount">再试试!!</button>
+
+        <div @click.self="divclick" style="width:500px;height:500px;background-color: red">
+            <div @click.stop="innerclick">11111</div>
+        </div>
+        <form action="" @submit.prevent="noReload">
+            <button type="submit">3132132</button>
+        </form>
+        <button @click="divclick">1</button>
+        <button @click.once='divclick'>2</button>
+        <input @keyup.enter="divclick" type="text">
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+ let App=new Vue({
+     el:'#app',
+     data:{
+         count:0
+     },
+     methods:{
+         addCount:function(count){
+            count=count||1
+            this.count+=count
+         },
+         divclick:function(){
+             alert('点我了')
+         },
+         innerclick:function(){
+             alert('也点我了')
+         },
+         noReload:function(){
+             alert('没有重载')
+         }
+     }
+ })
+</script>
+</html>
