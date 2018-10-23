@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for=" number in arr"> {{number}} </div>
+        <button @click="sortArray">点我一下你试试</button>
+        <button @click="reverseArray">再点我一下你试试</button>
+        <hr>
+        {{matchOO}}
+
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+    let App = new Vue({
+        el: '#app',
+        data: {
+            arr: ['pen','pencilr','eraser','book']
+        },
+        methods: {
+            sortArray: function () {
+                this.arr.sort(function (a, b) {
+                    return a.length - b.length
+                })
+            },
+            reverseArray:function(){
+               return this.arr.reverse()
+            }
+        },
+        computed:{
+            matchOO:function(){
+                return this.arr.filter(function(key){
+                    return key.match(/oo/)
+                })
+            }
+        }
+    })
+    Vue.set(App.arr,2,'帮帮梆梆')
+
+</script>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="girl in list"> {{girl.nvshen}} </li>
+            <li v-for="(girl,index) in list">{{index}} {{girl.nvshen}} </li>
+            <hr>
+            <li v-for="value in list2"> {{value}} </li>
+        </ul>
+        <div v-for="(value,key,index) in list2"> {{value}} {{key}} {{index}} </div>
+
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: "Hello Vue!",
+            list: [{ nvshen: '刘亦菲' }, { nvshen: '刘诗诗' }, { nvshen: '董洁' }],
+            list2:{car1:'FI',car2:'Mic',car3:'Bin'}
+        }
+    })
+</script>
+
+</html>
