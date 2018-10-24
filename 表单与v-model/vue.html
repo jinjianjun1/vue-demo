@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        v-model的用法 <br>
+        input和textarea的用法 <br>
+        <input type="text" v-model="value"> <br>
+        {{value}} <br>
+        <hr>
+        <textarea name="" id="" cols="30" rows="10"v-model="msg">222222</textarea>
+        <hr>
+        单选框<br>
+        单个单选框 <br>
+        <input type="radio" checked>
+        <input type="radio" :checked="oncli"> <br>
+        <input type="radio" value="1" name="only" v-model="checkname">1
+        <input type="radio" value="2" name="only" v-model="checkname">2
+        <input type="radio" value="3" name="only" v-model="checkname">3
+        {{checkname}} <br>
+        <hr>
+        <input type="checkbox" value="1" v-model="array">
+        <input type="checkbox" value="2" v-model="array">
+        <input type="checkbox" value="3" v-model="array">
+        {{array}}
+        <hr>
+        <select v-model="array">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+        </select>
+        {{array1}}
+        <hr>
+        <select v-model="array" multiple>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+        </select>
+        {{array2}}
+        <hr>
+        <input type="radio" v-model="picked" :value="chosen">
+        {{picked}}
+        <hr>
+        {{toogle}}
+        <input type="checkbox" v-model="toogle" :true-value="value1" :false-value="value2">
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+    let App=new Vue({
+        el:'#app',
+        data:{
+            value:'',
+            msg:'',
+            oncli:false,
+            checkname:'',
+            array:[],
+            array1:'',
+            array2:'',
+            picked:true,
+            chosen:'sdsdsdsd',
+            value1:'我是value1',
+            value2:'我是value2',
+            toogle:true
+        },
+        methods:{},
+        computed:{},
+    })
+</script>
+</html>
