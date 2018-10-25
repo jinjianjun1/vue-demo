@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <input type="text" v-model="width">
+        {{width}}
+            <my-child msg="父组件内容" ></my-child>
+            <my-child :width="width"></my-child>
+            
+    </div>
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+    let App=new Vue({
+        el:'#app',
+        data:{
+         msg:"sdsdsdsd",
+         width:''
+        },
+        components:{
+            'my-child':{
+                props:['msg','width'],
+                template:'<div> <h1 :style="realwidth">{{commit}}</h1> </div>',
+                data:function(){
+                    return {
+                        commit:this.msg
+                    }
+                },
+                computed:{
+                    reaWidth :function(){
+                        return this.width +'px'
+                    } 
+                }  
+                
+            }
+        }
+    })
+</script>
+
+</html>
