@@ -11,8 +11,8 @@
     <div id="app">
         <input type="text" v-model="width">
         {{width}}
-            <my-child msg="父组件内容" ></my-child>
-            <my-child :width="width"></my-child>
+            <my-child :msg="outerline" ></my-child>
+            <!-- <my-child :width="width"></my-child> -->
             
     </div>
     
@@ -22,22 +22,22 @@
     let App=new Vue({
         el:'#app',
         data:{
-         msg:"sdsdsdsd",
+         outerline:'我是父组件内容',
          width:''
         },
         components:{
             'my-child':{
                 props:['msg','width'],
-                template:'<div> <h1 :style="realwidth">{{commit}}</h1> </div>',
+                template:'<div> <h1>{{commit}}</h1> </div>',
                 data:function(){
                     return {
                         commit:this.msg
                     }
                 },
                 computed:{
-                    reaWidth :function(){
-                        return this.width +'px'
-                    } 
+                    // reaWidth :function(){
+                    //     return this.width +'px'
+                 //   } 
                 }  
                 
             }
