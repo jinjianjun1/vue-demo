@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <component :is="presentCop"></component>
+        <button @click="handle('A')">1</button>
+        <button @click="handle('B')">2</button>
+        <button @click="handle('C')">3</button>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+    Vue.component('compA', {
+        template:"<div>天气不错</div>"
+    })
+    Vue.component('compB', {
+        template:"<div>生日快乐</div>"
+    })
+    Vue.component('compC', {
+        template:"<div>你好我好</div>"
+    })
+    new Vue({
+        el:'#app',
+        data:{
+            presentCop:'compA'
+        },
+        methods:{
+            handle:function(tag){
+                this.presentCop='comp'+ tag
+            }
+        }
+    })
+
+</script>
+</html>
