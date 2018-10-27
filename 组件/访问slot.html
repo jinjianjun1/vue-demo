@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+        <mycomponent>
+            <p> {{msg}}</p>
+        </mycomponent>
+        <hr>
+        <mycomponent></mycomponent>
+        <hr>
+        <namecomponent class="">
+            <h1 slot="header">正文标题</h1>
+            <p slot="container">正文</p>
+            <p slot="footer">底部</p>
+        </namecomponent>
+    </div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+
+<script>
+    Vue.component('mycomponent', {
+        template: '<div>\
+                        <slot>\
+                            没内容则作为默认值出现\
+                        </slot>\
+                    </div>'
+    })
+    Vue.component('namecomponent', {
+        template: '<div>\
+                <div class="header">\
+            <slot name="header">\
+        </slot>\
+    </div>\
+            <div class="container">\
+                <slot name="container">\
+                </slot>\
+            </div>\
+            <div class="footer">\
+                <slot name="footer">\
+                </slot>\
+            </div>\
+        </div> ',
+        mounted() {
+          
+          let header=  this.$slots.footer
+          let text=header[0].elm.innerText
+        console.log(text)
+      },
+    })
+    let App = new Vue({
+        el: '#app',
+        data: {
+            msg: 'woshishei'
+        },
+      
+    })
+</script>
+
+</html>

@@ -10,8 +10,8 @@
     <div id="app">
         我的游戏币{{coin}}
         <my-chilid @change="brust">
-
         </my-chilid>
+        <my-chilid v-model="coin"></my-chilid>
     </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
@@ -40,16 +40,17 @@
                 methods:{
                     add:function(){
                         this.count+=100
-                        this.$emit('change',this.count)
+                        this.$emit('input',this.count)
                     },
                     reduce:function(){
                         this.count-=100
-                        this.$emit('change',this.count)
+                        this.$emit('input',this.count)
 
                     }
                 }
             }
         }
     })
+    
 </script>
 </html>

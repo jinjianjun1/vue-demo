@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <area-component>
+            <!-- <template slot="kkk" slot-scope="diy">
+                {{diy.text}}
+            </template> -->
+            <h1 slot="kkk" slot-scope="diy">
+                    {{diy.text}}
+            </h1>
+        </area-component>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+
+    Vue.component('area-component', {
+        template: '<div>\
+        <slot text="子组件插槽中的内容" name="kkk">\
+        </slot>\
+        </div>'
+    })
+
+    let App = new Vue({
+        el: '#app',
+        data: {}
+    })
+</script>
+
+</html>

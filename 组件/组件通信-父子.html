@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <myfirst v-model="a" ref="a"></myfirst>
+        <mysecond ref="b"></mysecond>
+       
+        <hr>
+        <childchain ref="c"></childchain> <br>
+        {{a}}
+        <hr>
+        <h1 @click="getChild">点我拿子组件内容</h1> <br>
+        {{fromchild}}
+
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+  
+    Vue.component('myfirst', {
+        template:'<div @click="handle">{{childa}}</div>',
+        data:function(){
+            return {
+                childa:'点我向b传递数据',
+                msg:'我是a中的msg'
+            }
+        },
+        methods:{
+            handle:function(){
+                // this.childa='我是来自子组件1的内容'
+                //this.$emit('input', this.childa)
+                this.$root.bus.$emit('diy',this.childa)    
+            }
+        }
+    })
+    
+    Vue.component('mysecond', {
+        template:'<div>{{childb}}</div>',
+        data:function(){
+            return {
+                childb:'I\'m second component',
+                msg:'我是b中的msg'
+            }
+        },
+        created() {
+            this.$root.bus.$on('diy', function(value){
+                alert(value)
+                this.childb=value
+                console.log(this.childb)
+            })
+        },
+    })
+    Vue.component('childchain', {
+        template:'<h1 @click="handle1">点我修改父组件内容<h1>',
+        data:function(){
+            return {
+                msg:'我是c中的msg'
+            }
+        },
+        methods:{
+            handle1:function(){
+                this.$parent.a='数据被修改了'
+            }
+        }
+    })
+    let App=  new Vue({
+        el:'#app',
+        data:{
+            a:'我是父组件内容',
+            bus: new Vue(),
+            fromchild:'准备捕获child'
+        },
+        methods:{
+            getChild:function(){
+               this.fromchild= this.$refs.a.msg
+            }
+        }
+    })
+</script>
+</html>
