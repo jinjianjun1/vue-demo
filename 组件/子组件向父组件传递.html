@@ -9,7 +9,7 @@
 <body>
     <div id="app">
         我的游戏币{{coin}}
-        <my-chilid @change="brust">
+        <!-- <my-chilid @change="brust"> -->
         </my-chilid>
         <my-chilid v-model="coin"></my-chilid>
     </div>
@@ -21,11 +21,11 @@
         data:{
             coin:0
         },
-        methods:{
-            brust:function(value){
-                this.coin=value
-            }
-        },
+        // methods:{
+        //     brust:function(value){
+        //         this.coin=value
+        //     }
+        // },
         components:{
             'my-chilid':{
                 template:'<div>\
@@ -35,7 +35,7 @@
                 data:function(){
                     return {
                         count:0
-                    }
+                        }
                 },
                 methods:{
                     add:function(){

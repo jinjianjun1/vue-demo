@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <my-component :name="name" @input="showname"></my-component> <br> -->
+        <my-component  v-model="name"></my-component> <br>
+
+        {{name}}
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+
+
+    Vue.component('my-component', {
+        render:function(createElement){
+            let _this=this
+            console.log(this)
+            return createElement('input',{
+                domprops:{
+                    value:_this.name
+                },
+                on:{
+                    input:function(event){
+                        _this.$emit('input',event.target.value)
+                    }
+                }
+                
+            })
+        },
+        props:['name']
+    })
+    new Vue({
+        el:'#app',
+        data:{
+            name:'jason'
+        },
+        // methods:{
+        //     showname:function(value){
+        //         this.name=value
+        //     }
+        // }
+    })
+</script>
+</html>

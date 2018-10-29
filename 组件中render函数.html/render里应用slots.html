@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-component>
+            <h1 slot="header">小心我点你</h1>
+            <p>别过来</p>
+            <h4 slot="footer">哈哈哈</h4>
+        </my-component>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+    Vue.component('my-component',{
+        render:function(createElement){
+            //header 等是数组 参数存的是Vnode  
+            
+            let header=this.$slots.header
+            let footer= this.$slots.footer
+            let main=this.$slots.default
+            
+            console.log(header)
+            return createElement('div',[
+                createElement('header',header),
+                createElement('footer',footer),
+                createElement('main',main)
+            ])
+        }
+    })
+    new Vue({
+        el:'#app'
+    })
+</script>
+</html>

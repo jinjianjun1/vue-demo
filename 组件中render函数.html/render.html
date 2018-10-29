@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-component >
+        </my-component>                
+    </div>   
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+
+    Vue.component('my-component', {
+        render:function(createElement){
+            //第一个参数：
+            // return createElement('div')
+            // return createElement({
+            //     template:'<h1>kandejianwo ?</h1>'
+            // })
+        //     let apsend=function(){
+        //         return{
+        //             template:'<h2>哈哈</h2>'
+        //         }
+        //     }
+        //     return createElement(apsend())
+          
+        //  第二个参数 只能是对象
+        // return createElement({
+            //     template:'<h1>我很好<h1>'
+            // },{
+            //     class:{
+            //         active:true
+            //     },
+            //     style:{
+            //         color:'darkred',
+            //         height:'30px',
+            //         width:"20px",
+            //     },
+            //     attr:{
+            //         id:'bbd'
+            //     },
+            //     domProps:{
+            //         innerHTML:'<div style="color:red">看这里</div>'
+            //     }
+            // })
+
+            //第三个参数
+            return createElement('div',[
+                createElement({
+                    template:"<h1>我是子节点</h1>"
+                })
+            ])
+    
+    }
+    })
+
+    new Vue({
+        el:'#app',
+        data:{}
+    })
+</script>
+</html>

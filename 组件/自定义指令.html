@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-dir> <br>
+        <div v-dic:haha.a.b.c="lala">
+            
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+    Vue.directive('dir', {
+        inserted:function(el){
+           // el.focus()
+            console.log(el)
+        }
+    })
+
+    new Vue({
+        el:'#app',
+        data:{}
+    })
+</script>
+</html>

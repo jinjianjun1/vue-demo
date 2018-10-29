@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="changegirl" :girl="girl">点我切换</button>
+        {{girl}}
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
+<script>
+
+    Vue.component('my-component', {
+        render:function(createElement){
+            if(this.girl){
+                imgsrc='./img/1.png'
+            }else{
+                imgsrc='./img/2.png'
+            }
+            return createElement('img',{
+                attrs:{
+                    src:imgsrc
+                }
+            })
+        },
+        props:['girl']
+    })
+    new Vue({
+        el:'#app',
+        data:{
+            girl:true
+        },
+        methods:{
+            changegirl:function(){
+                this.girl=!this.girl
+            }
+        }
+    })
+</script>
+</html>
