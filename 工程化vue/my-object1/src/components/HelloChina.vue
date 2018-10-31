@@ -2,6 +2,9 @@
   <div class="hello">
     <h1>Hello China</h1>
     <h2>Essential Links</h2>
+  <h3>{{ $route.params.look }}</h3>
+
+  
   </div>
 </template>
 

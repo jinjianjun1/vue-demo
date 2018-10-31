@@ -7,11 +7,13 @@ Vue.use(router)
 
 export default  new router({
   routes:[{
-    path:'/word',
+    name:'HelloWorld',
+    path:'/word/:id',
     component:HelloWorld
   },
   {
-    path:'/China',
+    name:'HelloChina',
+    path:'/China/:look',
     component:HelloChina
   }]
 })
